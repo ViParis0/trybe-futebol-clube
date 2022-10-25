@@ -18,8 +18,8 @@ export default class LoginController {
   };
 
   public verifyLogin = async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization as string;
     try {
+      const token = req.headers.authorization as string;
       const { data: { role } } = this.loginService.validateLogin(token);
       res.status(200).json({ role });
     } catch (error) {
