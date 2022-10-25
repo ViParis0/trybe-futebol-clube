@@ -1,10 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import ILoginService from '../interfaces/services/IUserService';
 
-// import LoginService from '../services/LoginService';
-
-// const loginService = new LoginService();
-
 export default class LoginController {
   private readonly loginService: ILoginService;
 
