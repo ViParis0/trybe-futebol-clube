@@ -10,6 +10,7 @@ import { correctBody, incorrectBodyInvalidEmail, incorrectBodyInvalidPassword, i
 import { app } from '../app';
 import { expect } from 'chai';
 import TokenManager from '../helpers/TokenManager';
+import LoginService from '../services/LoginService';
 
 chai.use(chaiHttp);
 
@@ -21,7 +22,7 @@ describe('Verifica a rota /login', () => {
       sinon
         .stub(User, "findOne")
         .resolves(user as User);
-      sinon.stub(TokenManager, "makeToken").resolves(token)
+      sinon.stub(TokenManager, "makeToken").returns(token)
     });
 
     afterEach(()=>{
@@ -57,5 +58,14 @@ describe('Testando um usuário invalido', () => {
     const httpResponse = await chai.request(app).post('/login').send(incorrectBodyInvalidEmail);
     expect(httpResponse.status).to.be.equal(401);
     expect(httpResponse.body).to.be.deep.equal(incorrectBodyResponse);
+  })
+})
+
+describe('Testando a rota /login/validate', () => {
+  it('Verifica se retorna uma role e um status 200, ao passar um token valido', async () => {
+    sinon.stub(TokenManager, 'validateToken').returns({ data: { role: 'admin' } });
+    const httpResponse = await chai.request(app).get('/login/validate').set('Authorization', token)
+    expect(httpResponse.status).to.be.equal(200);
+    expect(httpResponse.body).to.be.deep.equal({role: "admin"});
   })
 })
