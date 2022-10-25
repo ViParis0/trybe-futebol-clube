@@ -7,4 +7,9 @@ export default class TokenManager {
     const token = jwt.sign({ data: payload }, secret);
     return token;
   };
+
+  static validateToken = (token:string) => {
+    const payload = jwt.verify(token, secret);
+    return payload;
+  };
 }

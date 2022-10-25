@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 import User from '../database/models/User';
 
 import { Response } from 'superagent';
-import { correctBody, incorrectBody, incorrectBodyResponse, token, user } from './mocks/user';
+import { correctBody, incorrectBodyInvalidEmail, incorrectBodyInvalidPassword, incorrectBodyResponse, missingBodyEmail, missingBodyPassword, missingBodyResponse, token, user } from './mocks/user';
 import { app } from '../app';
 import { expect } from 'chai';
 import TokenManager from '../helpers/TokenManager';
@@ -34,9 +34,28 @@ describe('Verifica a rota /login', () => {
     expect(httpResponse.status).to.be.equal(200);
     expect(httpResponse.body).to.be.deep.equal({ token });
   })
-  it('Verifica se retorna um bad request status 400, ao passar usuário ou senha invalidos', async () => {
-    const httpResponse = await chai.request(app).post('/login').send(incorrectBody);
+  it('Verifica se retorna um bad request status 401, ao passar senha invalida', async () => {
+    const httpResponse = await chai.request(app).post('/login').send(incorrectBodyInvalidPassword);
+    expect(httpResponse.status).to.be.equal(401);
+    expect(httpResponse.body).to.be.deep.equal(incorrectBodyResponse);
+  })
+  it('Verifica se retorna um bad request status 400, ao não passar usuário ou senha', async () => {
+    const httpResponse = await chai.request(app).post('/login').send(missingBodyEmail);
     expect(httpResponse.status).to.be.equal(400);
+    expect(httpResponse.body).to.be.deep.equal(missingBodyResponse);
+  })
+  it('Verifica se retorna um bad request status 400, ao não passar usuário ou senha', async () => {
+    const httpResponse = await chai.request(app).post('/login').send(missingBodyPassword);
+    expect(httpResponse.status).to.be.equal(400);
+    expect(httpResponse.body).to.be.deep.equal(missingBodyResponse);
+  })
+})
+
+describe('Testando um usuário invalido', () => {
+  it('Verifica se retorna um bad request status 401, ao passar usuário invalido', async () => {
+    sinon.stub(User, "findOne").resolves();
+    const httpResponse = await chai.request(app).post('/login').send(incorrectBodyInvalidEmail);
+    expect(httpResponse.status).to.be.equal(401);
     expect(httpResponse.body).to.be.deep.equal(incorrectBodyResponse);
   })
 })
