@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { IMatchesService } from '../interfaces/services/IUserService';
+import { IMatchesService } from '../interfaces/services/IMatchesServices';
 
 export default class MatchesController {
   private readonly matchesService: IMatchesService;

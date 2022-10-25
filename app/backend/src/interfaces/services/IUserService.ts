@@ -1,5 +1,4 @@
 import { JwtPayload } from 'jsonwebtoken';
-import Matches from '../../database/models/Matches';
 
 export interface ILogin {
   email: string,
@@ -23,8 +22,4 @@ export interface IPayload extends JwtPayload{
 export default interface ILoginService {
   makeLogin({ email, password }: ILogin): Promise<string>;
   validateLogin(token: string): IPayload;
-}
-
-export interface IMatchesService {
-  getMatches(): Promise<Matches[]>
 }
