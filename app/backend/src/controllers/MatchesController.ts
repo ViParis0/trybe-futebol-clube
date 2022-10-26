@@ -1,15 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
-import HttpException from '../helpers/HttpException';
-import LoginService from '../services/LoginService';
 import { IMatchesService } from '../interfaces/services/IMatchesServices';
 
 export default class MatchesController {
   private readonly matchesService: IMatchesService;
-  private loginService: LoginService;
 
   constructor(matchesService: IMatchesService) {
     this.matchesService = matchesService;
-    this.loginService = new LoginService();
+    // this.loginService = new LoginService();
   }
 
   public getMatches = async (req: Request, res: Response, next: NextFunction) => {
@@ -33,9 +30,7 @@ export default class MatchesController {
   public createMatch = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const token = req.headers.authorization as string;
-      const payload = this.loginService.validateLogin(token);
-      if (!payload) throw new HttpException(401, 'Token must be a valid token');
-      const match = await this.matchesService.createMatch(req.body);
+      const match = await this.matchesService.createMatch(req.body, token);
       return res.status(201).json(match);
     } catch (error) {
       return next(error);
