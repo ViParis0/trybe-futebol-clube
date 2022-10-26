@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import HttpException from './HttpException';
 
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
@@ -9,7 +10,11 @@ export default class TokenManager {
   };
 
   static validateToken = (token:string) => {
-    const payload = jwt.verify(token, secret);
-    return payload;
+    try {
+      const payload = jwt.verify(token, secret);
+      return payload;
+    } catch (error) {
+      throw new HttpException(401, 'Token must be a valid token');
+    }
   };
 }

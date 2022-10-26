@@ -8,5 +8,7 @@ const matchesRouter = Router();
 
 // matchesRouter.get('/inProgress', matchesController.getInprogressMatches);
 matchesRouter.get('/', matchesController.getMatches);
+matchesRouter.post('/', matchesController.createMatch);
+matchesRouter.patch('/:id/finish', matchesController.finishMatch);
 
 export default matchesRouter;

@@ -62,6 +62,9 @@ describe('Testando um usuário invalido', () => {
 })
 
 describe('Testando a rota /login/validate', () => {
+  afterEach(()=>{
+    (User.findOne as sinon.SinonStub).restore();
+  })
   it('Verifica se retorna uma role e um status 200, ao passar um token valido', async () => {
     sinon.stub(TokenManager, 'validateToken').returns({ data: { role: 'admin' } });
     const httpResponse = await chai.request(app).get('/login/validate').set('Authorization', token)

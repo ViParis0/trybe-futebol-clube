@@ -1207,4 +1207,20 @@ const doneMatches = [
   }
 ]
 
-export { allMatches, inPgrogressTrueMatches, doneMatches }
+const createdMatch = {
+  "id": 49,
+  "homeTeam": 16,
+  "awayTeam": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+  "inProgress": true
+}
+
+const correctCreateBody = {
+  "homeTeam": 16,
+  "awayTeam": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+export { allMatches, inPgrogressTrueMatches, doneMatches, createdMatch, correctCreateBody }

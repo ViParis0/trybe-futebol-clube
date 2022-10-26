@@ -12,4 +12,5 @@ export interface IMatchesService {
   getMatches(): Promise<Matches[]>
   getInprogressMatches(inProgress: string): Promise<Matches[]>
   createMatch(match: IMatch, token: string): Promise<Matches>
+  finishMatch(id: number): Promise<void>
 }
