@@ -13,4 +13,5 @@ export interface ILeaderBoard {
 
 export default interface ILeaderBoardService {
   getLeaderBoardHome(): Promise<ILeaderBoard[]>
+  getLeaderBoardAway(): Promise<ILeaderBoard[]>
 }
