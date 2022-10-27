@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 import { expect } from 'chai';
 import Matches from '../database/models/Matches';
-import { allMatches, correctCreateBody, createdMatch, doneMatches, inPgrogressTrueMatches } from './mocks/matches';
+import { allMatches, correctCreateBody, createdMatch, doneMatches, incorrectCreateBody, inPgrogressTrueMatches } from './mocks/matches';
 import { token } from './mocks/user';
 import TokenManager from '../helpers/TokenManager';
 
@@ -43,7 +43,6 @@ describe('Verifica a rota /matches', () => {
   })
   it(`Verifica se é retornado um status 500,
   e uma mensagem de erro ao fazer um post em /matches sem um token`, async () => {
-   sinon.stub(Matches, 'create').resolves(createdMatch as Matches)
    sinon.stub(TokenManager, 'validateToken').throws();
    const httpResponse = await chai.request(app).post('/matches').send(correctCreateBody);
    expect(httpResponse.status).to.be.equal(500);
@@ -51,4 +50,11 @@ describe('Verifica a rota /matches', () => {
     "message": "Error"
   });
  })
+ it(`Verifica se é retornado um status 404,
+  e uma mensagem de erro ao fazer um post em /matches com um time que não existe na tabela teams`, async () => {
+  sinon.stub(TokenManager, 'validateToken').returns({ data: { role: 'admin' } });
+   const httpResponse = await chai.request(app).post('/matches').send(incorrectCreateBody).set('Authorization', token);;
+   expect(httpResponse.status).to.be.equal(404);
+   expect(httpResponse.body).to.be.deep.equal({message: 'There is no team with such id!'});
+ }) 
 })

@@ -1223,4 +1223,11 @@ const correctCreateBody = {
   "awayTeamGoals": 2,
 }
 
-export { allMatches, inPgrogressTrueMatches, doneMatches, createdMatch, correctCreateBody }
+const incorrectCreateBody = {
+  "homeTeam": 12345,
+  "awayTeam": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+export { allMatches, inPgrogressTrueMatches, doneMatches, createdMatch, correctCreateBody, incorrectCreateBody }

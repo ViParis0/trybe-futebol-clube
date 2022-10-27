@@ -46,4 +46,14 @@ export default class MatchesController {
       return next(error);
     }
   };
+
+  public updateScore = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      await this.matchesService.updateScore(Number(id), req.body);
+      return res.status(200).json({ message: 'ok' });
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

@@ -1,6 +1,6 @@
 import Teams from '../database/models/Teams';
 import Matches from '../database/models/Matches';
-import { IMatch, IMatchesService } from '../interfaces/services/IMatchesServices';
+import { IMatch, IMatchesService, ISimpleMatch } from '../interfaces/services/IMatchesServices';
 import HttpException from '../helpers/HttpException';
 import TokenManager from '../helpers/TokenManager';
 import TeamsService from './TeamsService';
@@ -50,6 +50,13 @@ export default class MatchesServices implements IMatchesService {
   public finishMatch = async (id: number): Promise<void> => {
     const finished = await Matches.update({ inProgress: false }, { where: { id } });
     if (finished) return;
+    throw new Error('Something went wrong');
+  };
+
+  public updateScore = async (id: number, body: ISimpleMatch): Promise<void> => {
+    const { homeTeamGoals, awayTeamGoals } = body;
+    const updated = await Matches.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+    if (updated) return;
     throw new Error('Something went wrong');
   };
 }
