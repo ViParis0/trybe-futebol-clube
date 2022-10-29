@@ -25,4 +25,13 @@ export default class LeaderBoardController {
       next(error);
     }
   };
+
+  public getTotalLeaderBoard = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const totalLeaderBoard = await this.leaderBoardService.getTotalLeaderBoard();
+      res.status(200).json(totalLeaderBoard);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
