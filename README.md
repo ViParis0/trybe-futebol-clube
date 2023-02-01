@@ -1,4 +1,9 @@
 # :construction: README customizado em construção ! :construction:
+
+# Este é meu projeto Blogs-API, desenvolvido na Trybe
+
+## Alguns comentários
+
 Eu sou parte do time de desenvolvimento do TFC, um site informativo sobre partidas e classificações de futebol. Nossa equipe foi responsável por desenvolver uma API utilizando o método TDD e integrar as aplicações através do docker-compose para que elas funcionem com um banco de dados.
 
 Em este projeto, estou construindo um back-end dockerizado, utilizando modelagem de dados com o Sequelize. Estou desenvolvendo de acordo com as regras de negócio fornecidas e minha API deve ser consumida pelo front-end já disponível.
