@@ -11,6 +11,24 @@ Em este projeto, estou construindo um back-end dockerizado, utilizando modelagem
 Para adicionar uma partida, é necessário ter um token, então a pessoa precisa estar logada para fazer alterações. Estamos criando um relacionamento entre as tabelas de times e partidas para atualizar as informações das partidas.
 
 Meu back-end irá implementar regras de negócio para popular adequadamente a tabela disponível no front-end, que será exibida para o usuário do sistema.
+
+## Como executar o projeto
+
+1. Abra o terminal e crie um diretório no local de sua preferência com o comando **mkdir**:
+```javascript
+  mkdir tfc
+```
+
+2. Entre no diretório que acabou de criar e depois clone o projeto:
+```javascript
+  cd tfc
+  git clone git@github.com:ViParis0/trybe-futebol-clube.git
+```
+
+
+
+
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
