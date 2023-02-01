@@ -1,6 +1,6 @@
 # :construction: README customizado em construção ! :construction:
 
-# Este é meu projeto Blogs-API, desenvolvido na Trybe
+# Este é meu projeto Trybe Futebol Clube, desenvolvido na Trybe
 
 ## Alguns comentários
 
