@@ -23,6 +23,7 @@ Meu back-end irá implementar regras de negócio para popular adequadamente a ta
 ```javascript
   cd tfc
   git clone git@github.com:ViParis0/trybe-futebol-clube.git
+  cd trybe-futebol-clube
 ```
 
 
