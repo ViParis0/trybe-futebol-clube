@@ -23,9 +23,22 @@ Meu back-end irá implementar regras de negócio para popular adequadamente a ta
 ```javascript
   cd tfc
   git clone git@github.com:ViParis0/trybe-futebol-clube.git
-  cd trybe-futebol-clube
 ```
 
+3. Acesse o diretório do projeto e depois utilize o comando **npm install** para instalar todas as dependências necessárias:
+```javascript
+  cd trybe-futebol-clube
+  npm install  
+```
+4. Nesse projeto tbm é necessário instalar as dependencias no frontend e backend para rodar toda a aplicação:
+```javascript
+  cd app
+  cd backend
+  npm install 
+  cd ..
+  cd frontend
+  npm install 
+```
 
 
 
