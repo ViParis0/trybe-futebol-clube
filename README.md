@@ -39,8 +39,18 @@ Meu back-end irá implementar regras de negócio para popular adequadamente a ta
   cd frontend
   npm install 
 ```
+## Endpoints:
 
-
+1. Post `/login`: para fazer login é preciso de um token válido
+2. Get `/teams`: devolve uma lista de times
+3. Get `/teams:id`: devolve o time de ID especifico 
+4. Get `/matches`: devolve uma lista de partidas
+5. Post `/matches`: Cria uma nova partida, é preciso de um token válido
+6. Patch `/matches/:id/finish`: para terminar uma partida
+7. Patch `/matches/:id`: para atualizar um placar
+8. Get `/leaderboard`: devolve a tabela com as colocações de cada time
+9. Get `/leaderboard/home`: devolve a tabela com as colocações cada time jogando em casa
+10. Get `/leaderboard/away`: devolve a tabela com as colocações cada time jogando fora de casa
 
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
