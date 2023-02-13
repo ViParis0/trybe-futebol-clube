@@ -2,7 +2,7 @@
 
 ## Alguns comentários
 
-Eu sou parte do time de desenvolvimento do TFC, um site informativo sobre partidas e classificações de futebol. Nossa equipe foi responsável por desenvolver uma API utilizando o método TDD e integrar as aplicações através do docker-compose para que elas funcionem com um banco de dados.
+O TFC é um site informativo sobre partidas e classificações de futebol.
 
 Neste projeto, estou criando um back-end dockerizado que utiliza modelagem de dados com o Sequelize. Estou desenvolvendo-o de acordo com as especificações de negócios e a minha API será utilizada pelo front-end existente.
 
